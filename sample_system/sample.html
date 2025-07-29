@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Phaserゲーム</title>
+  <style>
+    body { margin: 0; background: #111; }
+    canvas { display: block; margin: auto; }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.70.0/dist/phaser.js"></script>
+  <script>
+    const config = {
+      type: Phaser.AUTO,
+      width: 640,
+      height: 480,
+      backgroundColor: '#222',
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 0 },
+          debug: false
+        }
+      },
+      scene: {
+        preload: preload,
+        create: create,
+        update: update
+      }
+    };
+
+    const game = new Phaser.Game(config);
+
+    let player;
+    let cursors;
+
+    function preload() {
+      // シンプルなプレイヤー画像を読み込み（Data URL）
+      this.load.image('player', 'https://labs.phaser.io/assets/sprites/phaser-dude.png');
+    }
+
+    function create() {
+      player = this.physics.add.sprite(300, 220, 'player');
+      player.setCollideWorldBounds(true); // 画面外に出ない
+
+      cursors = this.input.keyboard.createCursorKeys();
+    }
+
+    function update() {
+      player.setVelocity(0);
+
+      if (cursors.left.isDown) {
+        player.setVelocityX(-160);
+      } else if (cursors.right.isDown) {
+        player.setVelocityX(160);
+      }
+
+      if (cursors.up.isDown) {
+        player.setVelocityY(-160);
+      } else if (cursors.down.isDown) {
+        player.setVelocityY(160);
+      }
+    }
+  </script>
+</body>
+</html>
