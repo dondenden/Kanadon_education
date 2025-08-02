@@ -1,3 +1,4 @@
+<!--変更2334-->
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -42,31 +43,9 @@
       const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
       const box = new THREE.Mesh(geometry, material);
       scene.add(box);
-
-      // カメラ移動（キー操作）
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "1") {
-          camera.position.set(0, 1.5, 5);
-          camera.lookAt(0, 0, 0);
-          console.log("現在の方向: 正面");
-        } else if (event.key === "2") {
-          camera.position.set(0, 6.5, 5);
-          camera.lookAt(0, 0, 0);
-          console.log("現在の方向: 上45度");
-        } else if (event.key === "3") {
-          camera.position.set(0, -2.5, 5);
-          camera.lookAt(0, 0, 0);
-          console.log("現在の方向: 下45度");
-        } else if (event.key === "4") {
-          camera.position.set(4, 5, 4);
-          camera.lookAt(0, 0, 0);
-          console.log("現在の方向: 右45度");
-        }
-      });
-
+      
       function tick() {
         requestAnimationFrame(tick);
-        box.rotation.y += 0.01; // 回転アニメーション
         renderer.render(scene, camera);
       }
 
