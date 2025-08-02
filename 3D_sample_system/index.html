@@ -1,4 +1,4 @@
-<!--変更2348-->
+<!--変更2358-->
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -34,9 +34,13 @@
       document.body.appendChild(renderer.domElement);
 
       // 光源
-      const light = new THREE.DirectionalLight(0xffffff, 2);
-      light.position.set(0, 2, 1);
-      scene.add(light);
+      const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+      pointLight.position.set(0,0,0);
+      scene.add(pointLight);
+
+      const ambient = new THREE.AmbientLight(0xffffff,0.3);
+      scene.add(ambient);
+
 
       // ボックスを作成
       const geometry = new THREE.BoxGeometry(10, 10, 10);
