@@ -1,0 +1,15 @@
+<body>
+<video id="webcam" autoplay playsinline style="display:none;"></video>
+<canvas id="overlay"></canvas>
+<script src="https://webgazer.cs.brown.edu/webgazer.js"></script>
+<script>
+webgazer.setGazeListener((data, timestamp) => {
+    if (data) {
+        const x = data.x; // 視線のX座標（px）
+        const y = data.y; // 視線のY座標（px）
+        console.log(`Gaze at: ${x}, ${y}`);
+        // ここでオブジェクトやカメラ移動処理を追加
+    }
+}).begin();
+</script>
+</body>
